@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Login</h1>
+    
+    
+    <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        
+        <button type="submit">Log in</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            // Prevent the form from submitting the traditional way
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Hardcoded email and password for demo purposes
+            const hardcodedEmail1 = 'user@gmail.com';
+            const hardcodedEmail2 = 'newuser@gmail.com';
+            const hardcodedEmail3 = 'rsaisiddhu@gmail.com';
+            const hardcodedEmail4 = 'siddhu@gmail.com';
+            
+            
+
+            const hardcodedPassword1 = 'Password@123';
+            const hardcodedPassword2 = 'Password@123';
+            const hardcodedPassword3 = 'Password@123';
+            const hardcodedPassword4 = 'Password@123';
+
+            if (email === hardcodedEmail1 && password === hardcodedPassword1) {
+                window.location.href = 'eamcet.html'; // Redirect to eamcet.html
+            } else if (email === hardcodedEmail2 && password === hardcodedPassword2) {
+                window.location.href = 'eamcet.html'; // Redirect to eamcet.html
+            } else if (email === hardcodedEmail3 && password === hardcodedPassword3) {
+                window.location.href = 'eamcet.html'; // Redirect to eamcet.html
+            } else if (email === hardcodedEmail4 && password === hardcodedPassword4) {
+                window.location.href = 'eamcet.html'; // Redirect to eamcet.html
+            } else {
+                alert('Invalid login credentials');
+            }
+        });
+    </script>
+</body>
+</html>

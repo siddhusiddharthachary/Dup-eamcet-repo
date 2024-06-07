@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+</head>
+<body>
+    
+    <h1>Signup</h1>
+    
+    <form id="signupForm" novalidate>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div>
+            <label for="password_confirmation">Repeat password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required>
+        </div>
+        
+        <button type="submit">Sign up</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const validation = new JustValidate('#signupForm');
+
+            validation
+                .addField('#name', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Name is required',
+                    },
+                ])
+                .addField('#email', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Email is required',
+                    },
+                    {
+                        rule: 'email',
+                        errorMessage: 'Email is invalid',
+                    },
+                ])
+                .addField('#password', [
+                    {
+                        rule: 'required',
+                        errorMessage: 'Password is required',
+                    },
+                    {
+                        rule: 'minLength',
+                        value: 8,
+                        errorMessage: 'Password must be at least 8 characters long',
+                    },
+                    {
+                        rule: 'customRegexp',
+                        value: /(?=.*[0-9])/,
+                        errorMessage: 'Password must contain at least one number',
+                    },
+                ])
+                .onSuccess((event) => {
+                    event.preventDefault(); 
+                    
+
+                    
+                    const password = document.getElementById('password').value;
+                    const passwordConfirmation = document.getElementById('password_confirmation').value;
+
+                    if (password !== passwordConfirmation) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+
+                    window.location.href = 'login.html';
+                });
+        });
+    </script>
+    
+</body>
+</html>
